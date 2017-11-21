@@ -13,7 +13,6 @@ import java.util.List;
 public class ReadFile {
 
     public static StringBuffer readFile(String fileName){
-        List<String> stringList = new ArrayList<>();
         StringBuffer buffer = new StringBuffer();
 
         try (BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream(fileName), "utf-8"))) {
