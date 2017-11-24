@@ -1,4 +1,4 @@
-package ua.nure.manivchuk.Practice4.task2;
+package ua.nure.manivchuk.Practice4.part2;
 
 import java.io.*;
 import java.util.ArrayList;
@@ -9,11 +9,35 @@ import java.util.regex.Pattern;
 /**
  * Created by Lenovo on 11/22/2017.
  */
-public class Task2 {
+public class Part2 {
+
+    private String fileNameIn;
+    private String fileNameOut;
+
+    public Part2(String fileNameIn, String fileNameOut) {
+        this.fileNameIn = fileNameIn;
+        this.fileNameOut = fileNameOut;
+    }
+
+    public String getFileNameIn() {
+        return fileNameIn;
+    }
+
+    public void setFileNameIn(String fileNameIn) {
+        this.fileNameIn = fileNameIn;
+    }
+
+    public String getFileNameOut() {
+        return fileNameOut;
+    }
+
+    public void setFileNameOut(String fileNameOut) {
+        this.fileNameOut = fileNameOut;
+    }
 
     public void readWriteData(){
-        String fileNameIn = "src/main/resources/part2In.txt";
-        String fileNameOut = "src/main/resources/part2Out.txt";
+        /*String fileNameIn = "src/main/resources/part2In.txt";
+        String fileNameOut = "src/main/resources/part2Out.txt";*/
         int[] array = null;
 
         boolean resWriteData = writeData(fileNameIn);
@@ -99,5 +123,14 @@ public class Task2 {
     private void showDataFromFile(String fileName) {
         StringBuffer stringBuffer = getDataFromFile(fileName);;
         System.out.println(stringBuffer.toString());
+    }
+
+
+    public static void main(String[] args) {
+        String file1 = "src/main/resources/part2In.txt";
+        String file2 = "src/main/resources/part2Out.txt";
+        Part2 part2 = new Part2(file1, file2);
+        part2.readWriteData();
+
     }
 }
