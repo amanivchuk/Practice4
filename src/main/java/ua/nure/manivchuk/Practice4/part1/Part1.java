@@ -2,6 +2,10 @@ package ua.nure.manivchuk.Practice4.part1;
 
 import ua.nure.manivchuk.Practice4.util.ReadFile;
 
+import java.io.BufferedReader;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -10,7 +14,6 @@ import java.util.regex.Pattern;
  */
 public class Part1 {
     private String fileName;
-    private StringBuffer stringBuffer;
 
     public Part1(String fileName) {
         this.fileName = fileName;
@@ -25,15 +28,26 @@ public class Part1 {
     }
 
     public String convertToUpperCase(){
-        stringBuffer = new StringBuffer();
-        StringBuffer list = ReadFile.readFile(fileName);
 
-        Pattern pattern = Pattern.compile("(\\p{Alpha}{3,})", Pattern.UNICODE_CHARACTER_CLASS);
-        Matcher matcher = pattern.matcher(list);
-        while (matcher.find()){
-            list.replace(matcher.start(),matcher.end(),matcher.group().toUpperCase());
+        StringBuffer buffer = new StringBuffer();
+
+        try (BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream(fileName), "utf-8"))) {
+            String currentLine;
+            while((currentLine = reader.readLine()) != null){
+                buffer.append(currentLine);
+
+                Pattern pattern = Pattern.compile("(\\p{Alpha}{3,})", Pattern.UNICODE_CHARACTER_CLASS);
+                Matcher matcher = pattern.matcher(buffer.toString());
+
+                while (matcher.find()){
+                   buffer.replace(matcher.start(),matcher.end(),matcher.group().toUpperCase());
+                }
+                buffer.append(System.lineSeparator());
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
         }
-        return list.toString();
+        return buffer.toString();
     }
 
     public static void main(String[] args) {
