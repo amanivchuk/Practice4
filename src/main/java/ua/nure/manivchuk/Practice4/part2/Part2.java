@@ -14,6 +14,9 @@ public class Part2 {
     private String fileNameIn;
     private String fileNameOut;
 
+    public Part2() {
+    }
+
     public Part2(String fileNameIn, String fileNameOut) {
         this.fileNameIn = fileNameIn;
         this.fileNameOut = fileNameOut;
@@ -35,9 +38,7 @@ public class Part2 {
         this.fileNameOut = fileNameOut;
     }
 
-    public void readWriteData(){
-        /*String fileNameIn = "src/main/resources/part2In.txt";
-        String fileNameOut = "src/main/resources/part2Out.txt";*/
+    public void output(){
         int[] array = null;
 
         boolean resWriteData = writeData(fileNameIn);
@@ -130,7 +131,7 @@ public class Part2 {
         String file1 = "src/main/resources/part2In.txt";
         String file2 = "src/main/resources/part2Out.txt";
         Part2 part2 = new Part2(file1, file2);
-        part2.readWriteData();
+        part2.output();
 
     }
 }

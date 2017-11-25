@@ -9,7 +9,6 @@ import java.util.regex.Pattern;
  * Created by Lenovo on 11/21/2017.
  */
 public class Part1 {
-//    private String file = "src/main/resources/part1.txt";
     private String fileName;
     private StringBuffer stringBuffer;
 
@@ -28,7 +27,6 @@ public class Part1 {
     public String convertToUpperCase(){
         stringBuffer = new StringBuffer();
         StringBuffer list = ReadFile.readFile(fileName);
-//        System.out.println(list);
 
         Pattern pattern = Pattern.compile("(\\p{Alpha}{3,})", Pattern.UNICODE_CHARACTER_CLASS);
         Matcher matcher = pattern.matcher(list);
