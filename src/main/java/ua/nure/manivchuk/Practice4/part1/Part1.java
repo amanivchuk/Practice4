@@ -36,7 +36,7 @@ public class Part1 {
             while((currentLine = reader.readLine()) != null){
                 buffer.append(currentLine);
 
-                Pattern pattern = Pattern.compile("(\\p{Alpha}{3,})", Pattern.UNICODE_CHARACTER_CLASS);
+                Pattern pattern = Pattern.compile("(\\p{Alpha}{4,})", Pattern.UNICODE_CHARACTER_CLASS);
                 Matcher matcher = pattern.matcher(buffer.toString());
 
                 while (matcher.find()){
